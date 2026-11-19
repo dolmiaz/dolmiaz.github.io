@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plain Timeline — timelines from plain text in Obsidian</title>
+<meta name="description" content="An Obsidian plugin that draws timelines from plain text: vertical or horizontal, cards or to scale, and a note view that turns timed headings into a timeline.">
+<meta property="og:title" content="Plain Timeline">
+<meta property="og:description" content="Timelines from plain text in Obsidian.">
+<meta property="og:image" content="/assets/img/vertical-cards.jpg">
+<script>document.documentElement.lang=localStorage.getItem("lang")||((navigator.language||"").toLowerCase().indexOf("ja")===0?"ja":"en")</script>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="brand" href="/">dolmiaz<span>/</span></a>
+  <nav class="nav"><a href="/plain-timeline/">Plain Timeline</a><a href="https://github.com/dolmiaz">GitHub</a></nav>
+  <div class="lang" role="group" aria-label="Language"><button data-lang="en" aria-pressed="false">EN</button><button data-lang="ja" aria-pressed="false">JA</button></div>
+</div></header>
+<main>
+<div class="hero"><div class="wrap hero-grid"><div>
+  <p class="eyebrow">Obsidian plugin · MIT</p>
+  <h1 lang="en">Write it as text.<br><em>See it as a timeline.</em></h1>
+  <h1 lang="ja">テキストで<wbr>書いて、<br><em>年表で<wbr>見る。</em></h1>
+  <p class="lede" lang="en">Plain Timeline turns a few lines in a code block into a timeline — vertical or horizontal, evenly spaced cards or drawn to scale. Year-only dates, BCE, and periods still going on all work.</p>
+  <p class="lede" lang="ja">コードブロックに数行書くだけで、年表になります。縦か横、等間隔のカードか時間に比例した時間軸。年だけの日付、紀元前、今も続く期間にも対応しています。</p>
+  <div class="actions">
+    <a class="btn primary" href="https://github.com/dolmiaz/Plain-Timeline"><span lang="en">View on GitHub</span><span lang="ja">GitHubで見る</span></a>
+    <a class="btn" href="https://github.com/dolmiaz/Plain-Timeline/releases/latest"><span lang="en">Latest release</span><span lang="ja">最新版をダウンロード</span></a>
+  </div>
+  </div>
+  <div class="hero-shot" aria-hidden="true"><div class="shot"><img src="/assets/img/vertical-scale.jpg" alt=""></div></div>
+</div></div>
+
+<section id="syntax"><div class="wrap">
+  <h2 lang="en">Plain text in, timeline out</h2>
+  <h2 lang="ja">書くのはテキストだけ</h2>
+  <p class="sub" lang="en">One line per event. <code>@</code> for periods, <code>=</code> for markers, an indented line to keep writing the description. The syntax is compatible with Chronos Timeline, so existing lines can be pasted as they are.</p>
+  <p class="sub" lang="ja">1行に1つの出来事。期間は <code>@</code>、目印は <code>=</code>、字下げした行で説明を続けられます。行の書き方はChronos Timelineと互換なので、手元の年表をそのまま貼れます。</p>
+  <div class="split">
+    <div class="code"><div class="head">```plain-timeline</div><pre><span class="k">-</span> <span class="d">[1789-07-14]</span> Storming of the Bastille | The revolution begins in Paris
+<span class="k">-</span> <span class="d">[1791-06-20]</span> Flight to Varennes | The royal family is caught fleeing
+<span class="k">@</span> <span class="d">[1792-09-21~1804-05-18]</span> First Republic | Monarchy abolished
+<span class="k">-</span> <span class="d">[1793-01-21]</span> Execution of Louis XVI
+<span class="k">@</span> <span class="d">[1793-09~1794-07]</span> Reign of Terror | [[Robespierre]] and the Committee of Public Safety
+<span class="k">@</span> <span class="d">[1799-11-09~1804-05-18]</span> Consulate | Napoleon as First Consul
+<span class="k">-</span> <span class="d">[1804-12-02]</span> Napoleon crowned Emperor
+<span class="k">=</span> <span class="d">[1815-06-18]</span> Waterloo</pre></div>
+    <div class="shot"><img src="/assets/img/vertical-cards.jpg" alt="The French Revolution drawn as vertical cards" loading="lazy"></div>
+  </div>
+</div></section>
+
+<section id="layouts"><div class="wrap">
+  <h2 lang="en">Four layouts, one switch</h2>
+  <h2 lang="ja">4通りの表示を、ボタンひとつで</h2>
+  <p class="sub" lang="en">Each timeline picks its own orientation and look. Cards suit events; the scale look shows how long periods really were.</p>
+  <p class="sub" lang="ja">年表ごとに向きと見た目を選べます。出来事はカードで、期間の長さを見せたいときは時間軸で。</p>
+  <div class="grid4">
+    <figure><div class="shot"><img src="/assets/img/vertical-cards.jpg" alt="" loading="lazy"></div><figcaption><b lang="en">Vertical · Cards</b><b lang="ja">縦 · カード</b></figcaption></figure>
+    <figure><div class="shot"><img src="/assets/img/vertical-scale.jpg" alt="" loading="lazy"></div><figcaption><b lang="en">Vertical · Scale</b><b lang="ja">縦 · 時間軸</b></figcaption></figure>
+    <figure><div class="shot"><img src="/assets/img/horizontal-cards.jpg" alt="" loading="lazy"></div><figcaption><b lang="en">Horizontal · Cards</b><b lang="ja">横 · カード</b></figcaption></figure>
+    <figure><div class="shot"><img src="/assets/img/horizontal-scale.jpg" alt="" loading="lazy"></div><figcaption><b lang="en">Horizontal · Scale</b><b lang="ja">横 · 時間軸</b></figcaption></figure>
+  </div>
+</div></section>
+
+<section id="note-view"><div class="wrap">
+  <h2 lang="en">Logs read like a timeline</h2>
+  <h2 lang="ja">ログが、そのまま時系列に</h2>
+  <p class="sub" lang="en">Choose folders in the settings, and notes inside them show every heading that starts with a date or time as a timeline in reading view. The note itself stays plain Markdown. Click a time to jump into editing.</p>
+  <p class="sub" lang="ja">設定でフォルダを選ぶと、その中のノートは日付や時刻で始まる見出しを、閲覧モードで時系列に表示します。ノートは普通のMarkdownのまま。時刻をクリックすると、その位置から編集できます。</p>
+  <div class="split">
+    <div><div lang="en"><div class="code"><div class="head">Worklog/2026-10-21.md</div><pre><span class="k">##</span> <span class="d">2026-10-21 23:52</span> Review plan
+Fixed the rubric before the first run.
+
+<span class="k">##</span> <span class="d">2026-10-22 00:02</span> Calibrated scores
+Re-scored two past reports.
+
+<span class="k">##</span> <span class="d">00:23</span> Baseline measured
+Time-only headings take the date above.</pre></div></div><div lang="ja"><div class="code"><div class="head">Worklog/2026-10-21.md</div><pre><span class="k">##</span> <span class="d">2026-10-21 23:52</span> 評価の計画
+最初の実行の前に、採点基準を固定した。
+
+<span class="k">##</span> <span class="d">2026-10-22 00:02</span> 採点の校正
+過去のレポート2本を採点し直した。
+
+<span class="k">##</span> <span class="d">00:23</span> 基準版を測定
+時刻だけの見出しは、上の日付を引き継ぐ。</pre></div></div></div>
+    <div class="nv-demo" aria-label="Note view preview">
+      <div class="nv-entry"><div class="nv-h"><div class="nv-when"><span class="nv-date"><span lang="en">Oct 21, 2026</span><span lang="ja">2026年10月21日</span></span><span class="nv-time">23:52</span></div><span lang="en">Review plan</span><span lang="ja">評価の計画</span></div>
+        <div class="nv-card"><span lang="en">Fixed the rubric before the first run.</span><span lang="ja">最初の実行の前に、採点基準を固定した。</span></div></div>
+      <div class="nv-entry"><div class="nv-h"><div class="nv-when"><span class="nv-date"><span lang="en">Oct 22, 2026</span><span lang="ja">2026年10月22日</span></span><span class="nv-time">00:02</span></div><span lang="en">Calibrated scores</span><span lang="ja">採点の校正</span></div>
+        <div class="nv-card"><span lang="en">Re-scored two past reports.</span><span lang="ja">過去のレポート2本を採点し直した。</span></div></div>
+      <div class="nv-entry"><div class="nv-h"><div class="nv-when"><span class="nv-time">00:23</span></div><span lang="en">Baseline measured</span><span lang="ja">基準版を測定</span></div>
+        <div class="nv-card"><span lang="en">Time-only headings take the date above.</span><span lang="ja">時刻だけの見出しは、上の日付を引き継ぐ。</span></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="features"><div class="wrap">
+  <h2 lang="en">The details</h2>
+  <h2 lang="ja">細かいところ</h2>
+  <div class="feat">
+    <div><h3 lang="en">Any calendar span</h3><h3 lang="ja">どんな時代でも</h3><p lang="en">Years, months or days; BCE; spans of billions of years.</p><p lang="ja">年・年月・年月日、紀元前、何十億年の幅まで。</p></div>
+    <div><h3 lang="en">Your date format</h3><h3 lang="ja">日付の書き方を選べる</h3><p lang="en">Y-M-D, D-M-Y or M-D-Y input; ISO or custom display.</p><p lang="ja">入力は年月日・日月年・月日年、表示はISOや自分の書式で。</p></div>
+    <div><h3 lang="en">Links everywhere</h3><h3 lang="ja">どこでもリンク</h3><p lang="en">[[Wiki links]] and URLs in names and descriptions, with page preview.</p><p lang="ja">名前と説明に [[リンク]] もURLも。ページプレビュー付き。</p></div>
+    <div><h3 lang="en">Phones and tablets</h3><h3 lang="ja">スマホ・タブレット</h3><p lang="en">Single column on phones, larger targets, tap for details.</p><p lang="ja">スマホでは1列、押しやすい大きさ、タップで詳細。</p></div>
+    <div><h3 lang="en">English and Japanese</h3><h3 lang="ja">英語と日本語</h3><p lang="en">The interface and option names in both languages.</p><p lang="ja">画面も指定の書き方も、両方の言語で。</p></div>
+    <div><h3 lang="en">Nothing hidden</h3><h3 lang="ja">黙って消さない</h3><p lang="en">Lines that can't be read are listed under the timeline.</p><p lang="ja">読めなかった行は、年表の下にお知らせとして出ます。</p></div>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>© dolmiaz</span><span><a href="https://github.com/dolmiaz">github.com/dolmiaz</a></span></div></footer>
+<script src="/assets/lang.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+:root {
+  --bg: #0c0d10;
+  --bg-2: #13151a;
+  --line: #24272f;
+  --text: #ecedf0;
+  --muted: #9b9ea8;
+  --faint: #5d616c;
+  --accent: #6b9bff;
+  --accent-soft: rgba(107, 155, 255, .12);
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Inter", "Hiragino Sans", "Noto Sans JP", "Segoe UI", sans-serif;
+  --max: 1120px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 var(--sans); }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+/* top bar */
+.bar { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); background: rgba(12, 13, 16, .72); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
+.brand { font: 600 15px var(--mono); text-decoration: none; letter-spacing: -.01em; }
+.brand span { color: var(--accent); }
+.nav { display: flex; gap: 20px; margin-left: auto; font-size: 14px; color: var(--muted); }
+.nav a { text-decoration: none; }
+.nav a:hover { color: var(--text); }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.lang button { background: none; border: 0; color: var(--muted); font: 500 12px var(--mono); padding: 5px 10px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--accent-soft); color: var(--text); }
+.lang button:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* bilingual: show one language at a time */
+html[lang="en"] [lang="ja"]:not(html), html[lang="ja"] [lang="en"]:not(html) { display: none !important; }
+
+/* hero */
+.hero { padding: 104px 0 72px; position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: -40% -10% auto auto; width: 720px; height: 720px;
+  background: radial-gradient(closest-side, rgba(107, 155, 255, .22), transparent); pointer-events: none; }
+.eyebrow { font: 500 13px var(--mono); color: var(--accent); letter-spacing: .04em; text-transform: uppercase; margin: 0 0 18px; }
+h1 { font-size: clamp(44px, 7vw, 84px); line-height: 1.02; letter-spacing: -.035em; margin: 0 0 22px; font-weight: 700; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 640px; margin: 0 0 34px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 10px; font-weight: 600; font-size: 15px;
+  text-decoration: none; border: 1px solid var(--line); background: var(--bg-2); }
+.btn:hover { border-color: var(--faint); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #0b1020; }
+.btn.primary:hover { filter: brightness(1.08); }
+
+/* sections */
+section { padding: 88px 0; border-top: 1px solid var(--line); }
+h2 { font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -.025em; line-height: 1.15; margin: 0 0 14px; }
+.sub { color: var(--muted); max-width: 640px; margin: 0 0 40px; }
+
+/* plain text → timeline */
+.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 28px; align-items: start; }
+.code { background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.code .head { display: flex; gap: 6px; padding: 12px 14px; border-bottom: 1px solid var(--line); font: 12px var(--mono); color: var(--faint); }
+.code pre { margin: 0; padding: 18px 20px; font: 13.5px/1.75 var(--mono); color: #c9cbd2; overflow-x: auto; white-space: pre; }
+.code .k { color: var(--accent); } .code .d { color: #e7b86b; } .code .c { color: var(--faint); }
+.shot { border-radius: 14px; border: 1px solid var(--line); overflow: hidden; background: #1e1e1e; }
+
+/* four layouts */
+.grid4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+figure { margin: 0; }
+figcaption { margin-top: 12px; font-size: 14px; color: var(--muted); }
+figcaption b { color: var(--text); font-weight: 600; margin-right: 6px; }
+
+/* note view demo (same structure as the plugin) */
+.nv-demo { background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px; padding: 28px 28px 8px; }
+.nv-entry { --col: 92px; position: relative; }
+.nv-h { position: relative; padding-left: calc(var(--col) + 16px); font-size: 19px; font-weight: 650; margin: 0 0 10px; min-height: 1.3em; }
+.nv-when { position: absolute; left: 0; top: 0; bottom: 0; width: var(--col); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1; }
+.nv-date { font-size: 11px; color: var(--muted); background: var(--bg-2); }
+.nv-time { font: 600 15px var(--mono); padding: 0 3px 2px; border-bottom: 2px solid var(--accent); background: var(--bg-2); }
+.nv-h::after { content: ""; position: absolute; left: calc(var(--col) / 2 - 1px); top: 50%; bottom: -10px; border-left: 2px solid var(--accent); }
+.nv-card { position: relative; margin: 0 0 26px calc(var(--col) / 2 + 14px); padding: 12px 16px; border-radius: 10px;
+  background: var(--accent-soft); color: #cfd2da; font-size: 14.5px; }
+.nv-card::before { content: ""; position: absolute; left: -15px; top: -12px; bottom: 6px; border-left: 2px solid var(--accent); }
+
+/* features */
+.feat { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.feat div { background: var(--bg); padding: 22px 22px 24px; }
+.feat h3 { margin: 0 0 6px; font-size: 16px; }
+.feat p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+/* home: projects */
+.card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 32px; align-items: center; text-decoration: none;
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px; padding: 32px; transition: border-color .2s; }
+.card:hover { border-color: var(--faint); }
+.card h3 { font-size: 28px; letter-spacing: -.02em; margin: 6px 0 10px; }
+.card p { color: var(--muted); margin: 0 0 18px; }
+.tag { font: 500 12px var(--mono); color: var(--accent); }
+.more { font-weight: 600; color: var(--accent); }
+
+footer { border-top: 1px solid var(--line); padding: 36px 0 48px; color: var(--faint); font-size: 14px; }
+footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; }
+
+@media (max-width: 860px) {
+  .split, .card { grid-template-columns: 1fr; }
+  .feat { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 18px; }
+  .nav { display: none; }
+  .hero { padding: 72px 0 56px; }
+  section { padding: 64px 0; }
+  .grid4, .feat { grid-template-columns: 1fr; }
+  .card { padding: 22px; }
+  .nv-demo { padding: 20px 14px 4px; }
+  .nv-entry { --col: 70px; }
+  .nv-h { font-size: 16.5px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* hero visual: the real rendering, floating at an angle on wide screens */
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 48px; align-items: center; }
+.hero-shot { perspective: 1400px; }
+.hero-shot .shot { transform: rotateY(-14deg) rotateX(4deg) translateX(20px); transform-origin: left center;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .8), 0 0 0 1px rgba(107, 155, 255, .18), 0 0 80px -20px rgba(107, 155, 255, .35); }
+.split .code pre { white-space: pre-wrap; word-break: break-word; }
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-shot .shot { transform: none; }
+}
+h1, h2 { text-wrap: balance; }
+h1[lang="ja"], h2[lang="ja"] { word-break: keep-all; overflow-wrap: anywhere; }
+.hero-grid h1 { font-size: clamp(40px, 5.4vw, 74px); }
+.hero-shot .shot { max-height: 560px; }
+.hero-shot img { width: 100%; object-fit: cover; object-position: top; }
+.nv-date { white-space: nowrap; }
+@media (max-width: 560px) { .nv-entry { --col: 84px; } .nv-date { font-size: 10px; } }
+@media (max-width: 560px) { h1 { font-size: 40px; } }
